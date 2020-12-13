@@ -16,7 +16,7 @@ My conclusion, avoid getters & setters and use public properties but in collecti
 
 What do you think about this? 
 
-If you want to try something to install
+If you want to try something, to install
 
 ```sh
 docker-compose up -d
