@@ -12,6 +12,20 @@ This simple project shows the possibility of not using getters and setters, but 
 - Prevent the lack of synchronization when they are bidirectional relationships.
 - When you want to add an element that already exists, the application will give us an error ...
 
-My conclusion, avoid getters & setters and use public properties but collection must be declared with his own methods.
+My conclusion, avoid getters & setters and use public properties but in collection must be declared with his own methods.
 
 What do you think about this? 
+
+If you want to try something to install
+
+```sh
+docker-compose up -d
+docker-compose exec php bash
+composer install
+```
+
+To execute 
+
+```sh
+php src/cli/1_create_data.php
+```
