@@ -1,0 +1,4 @@
+.idea
+src/Proxy
+vendor
+db.sqlite

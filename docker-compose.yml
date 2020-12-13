@@ -1,0 +1,11 @@
+version: "3.1"
+services:
+    php:
+        image: phpdockerio/php80-fpm:latest
+        build: ./
+        container_name: php
+        working_dir: /application
+        volumes:
+            - .:/application
+        environment:
+            - DEBIAN_FRONTEND=noninteractive
