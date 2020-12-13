@@ -1,38 +1,17 @@
-<?php
+### Trying to use public properties in doctrine and remove getters & setters in doctrine 
 
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
+It has always been said that code generators are not good practice, since the problem is not to generate them but to maintain the code.
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+In this case in an application, if you want to overwrite or reuse entities many times you have to change the properties of these getters and setters and it is a great effort and it does not benefit us so much.
 
-require_once "vendor/autoload.php";
+Another good practice would be that the default behavior is what is expected and when there is a special occasion it is overwritten.
+For fast development applications it is a real tedium to generate and maintain all this code, which we will rarely change its base behavior.
 
-// Create a simple "default" Doctrine ORM configuration for Annotations
-$isDevMode = true;
-$proxyDir = __DIR__.'/src/Proxy';
-$cache = null;
-$useSimpleAnnotationReader = false;
-$config = Setup::createAnnotationMetadataConfiguration([__DIR__."/src/Entity"], $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
+This simple project shows the possibility of not using getters and setters, but for collections it is advisable to use internal methods. Because we have 2 big problems.
 
-// database configuration parameters
-$conn = [
-    'driver' => 'pdo_sqlite',
-    'path' => __DIR__ . '/db.sqlite',
-];
+- Prevent the lack of synchronization when they are bidirectional relationships.
+- When you want to add an element that already exists, the application will give us an error ...
 
-// obtaining the entity manager
-$entityManager = EntityManager::create($conn, $config);
-$logger = new \Doctrine\DBAL\Logging\DebugStack();
+My conclusion, avoid getters & setters and use public properties but collection must be declared with his own methods.
 
-$entityManager->getConnection()
-    ->getConfiguration()
-    ->setSQLLogger($logger);
-
-$printQueries = function () use ($logger) {
-    echo "\n\n";
-    foreach ($logger->queries as $index => $query) {
-        echo $index.' - '. $query['sql']." / ".($query['params'] ? implode(', ', $query['params']) : '')."\n";
-    }
-};
+What do you think about this? 
