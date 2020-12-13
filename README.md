@@ -1,4 +1,4 @@
-### Trying to use public properties in doctrine and remove getters & setters in doctrine 
+### Trying to use public properties in doctrine and remove getters & setters
 
 It has always been said that code generators are not good practice, since the problem is not to generate them but to maintain the code.
 
