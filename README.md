@@ -29,3 +29,5 @@ To execute
 ```sh
 php src/cli/1_create_data.php
 ```
+
+Really love the simplicity in the domain classes :heartpulse:.

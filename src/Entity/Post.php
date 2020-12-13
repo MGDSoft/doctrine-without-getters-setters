@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Doctrine\ArrayCollectionEx;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,9 +51,9 @@ class Post
 
     public function __construct()
     {
-        $this->comments       = new ArrayCollectionEx();
-        $this->commentsLazies = new ArrayCollectionEx();
-        $this->tags           = new ArrayCollectionEx();
+        $this->comments       = new ArrayCollection();
+        $this->commentsLazies = new ArrayCollection();
+        $this->tags           = new ArrayCollection();
     }
 
 }
